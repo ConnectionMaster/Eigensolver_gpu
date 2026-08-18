@@ -30,9 +30,9 @@ module zhegvdx_gpu
 
     ! zhegvdx_gpu
     ! This solver computes eigenvalues and associated eigenvectors over a specified integer range for a
-    ! hermetian-definite eigenproblem in the following form:
+    ! hermitian-definite eigenproblem in the following form:
     !     A * x = lambda * B * x
-    ! where A and B are hermetian-matrices and B is positive definite. The solver expects the upper-triangular parts of the
+    ! where A and B are hermitian-matrices and B is positive definite. The solver expects the upper-triangular parts of the
     ! input A and B arguments to be populated. This configuration corresponds to calling ZHEGVX within LAPACK with the configuration
     ! arguments 'ITYPE = 1', 'JOBZ = 'V'', 'RANGE = 'I'', and 'UPLO = 'U''.
     !
@@ -116,7 +116,7 @@ module zhegvdx_gpu
         print*, "zhegvdx_gpu error: lwork_h must be at least N"
         info = -1
         return
-      else if (lrwork_h < 1 + 5*N + 2*N*N) then 
+      else if (lrwork_h < 1_8 + 5_8*N + 2_8*N*N) then 
         print*, "zhegvdx_gpu error: lrwork_h must be at least 1 + 5*N + 2*N*N"
         info = -1
         return

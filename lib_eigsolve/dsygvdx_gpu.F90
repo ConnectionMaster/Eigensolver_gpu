@@ -102,7 +102,7 @@ module dsygvdx_gpu
         print*, "dsygvdx_gpu error: lwork must be at least 2*64*64 + 66*N"
         info = -1
         return
-      else if (lwork_h < 1 + 6*N + 2*N*N) then
+      else if (lwork_h < 1_8 + 6_8*N + 2_8*N*N) then
         print*, "dsygvdx_gpu error: lwork_h must be at least 1 + 6*N + 2*N*N"
         info = -1
         return
